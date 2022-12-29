@@ -1,0 +1,1 @@
+import { toDomElement } from "../index";
