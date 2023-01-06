@@ -11,7 +11,7 @@
     "watch": "npx tsc --watch",
     "test": "jest --watch",
     "demo": "parcel ./demo/demo.html --no-cache --dist-dir ./demo/build/",
-    "build": "npx tsc --build --clean && npx tsc --build"
+    "build": "tsc --build --clean && tsc --build"
   },
   "author": "Daeinc",
   "license": "MIT",

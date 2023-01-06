@@ -1,6 +1,6 @@
 import { describe, expect, test, afterEach, beforeEach } from "@jest/globals";
 import "jest-canvas-mock";
-import { toDomElement, appendChild } from "./index";
+import { appendChild, toElement } from "./index";
 
 describe("appendChild()", () => {
   let parent: HTMLDivElement;
@@ -51,8 +51,42 @@ describe("appendChild()", () => {
   });
 });
 
-describe("toDomElement()", () => {
-  test("test", () => {
-    // expect(toDomElement('div'));
+describe("toElement()", () => {
+  // Element | HTMLElement | HTMLDivElement;
+  const div = document.createElement("div");
+  document.body.appendChild(div);
+
+  const divFromString = toElement("div");
+  const divFromElement = toElement(div);
+
+  beforeEach(() => {
+    //
+  });
+
+  afterEach(() => {
+    document.body.innerHTML = "";
+  });
+
+  test("> starting div has correct type (Element, HTMLElement, HTMLDivElement)", () => {
+    expect(div instanceof Element).toBe(true);
+    expect(div instanceof HTMLElement).toBe(true);
+    expect(div instanceof HTMLDivElement).toBe(true);
+    expect(div instanceof HTMLAnchorElement).toBe(false);
+  });
+
+  test("converts string input to Element", () => {
+    expect(divFromString instanceof Element).toBe(true);
+    expect(divFromString instanceof HTMLElement).toBe(true);
+    expect(divFromString instanceof HTMLDivElement).toBe(true);
+    expect(divFromString instanceof HTMLSelectElement).toBe(false);
+    expect(div === divFromString).toBe(true);
+  });
+
+  test("returns Element as is", () => {
+    expect(divFromElement instanceof Element).toBe(true);
+    expect(divFromElement instanceof HTMLElement).toBe(true);
+    expect(divFromElement instanceof HTMLDivElement).toBe(true);
+    expect(divFromElement instanceof HTMLParagraphElement).toBe(false);
+    expect(div === divFromElement).toBe(true);
   });
 });
