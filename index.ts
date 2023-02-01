@@ -19,7 +19,7 @@ export const appendChild = (
 };
 
 /**
- * convert selector (string) to Element. if already typeof Element, return as is.
+ * convert selector (string) to Element. if already an Element, return as is.
  *
  * @param selector
  * @returns
@@ -33,12 +33,14 @@ export const toElement = (selector: string | Element) => {
       );
     }
     return element;
+  } else if (selector instanceof Element) {
+    return selector;
   }
-  return selector;
+  throw new Error("input must be either string or Element");
 };
 
 /**
- * convert selector (string) to HTMLElement. if already typeof HTMLElement, return as is.
+ * convert selector (string) to HTMLElement. if already an HTMLElement, return as is.
  *
  * @param selector
  * @returns
@@ -52,6 +54,8 @@ export const toHTMLElement = (selector: string | HTMLElement) => {
       );
     }
     return element;
+  } else if (selector instanceof HTMLElement) {
+    return selector;
   }
-  return selector;
+  throw new Error("input must be either string or HTMLElement");
 };

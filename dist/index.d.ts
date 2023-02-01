@@ -5,14 +5,14 @@
  */
 export declare const appendChild: (parent: Element | string | undefined, child: Element | string) => void;
 /**
- * convert selector (string) to Element. if already typeof Element, return as is.
+ * convert selector (string) to Element. if already an Element, return as is.
  *
  * @param selector
  * @returns
  */
 export declare const toElement: (selector: string | Element) => Element;
 /**
- * convert selector (string) to HTMLElement. if already typeof HTMLElement, return as is.
+ * convert selector (string) to HTMLElement. if already an HTMLElement, return as is.
  *
  * @param selector
  * @returns

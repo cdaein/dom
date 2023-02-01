@@ -89,4 +89,9 @@ describe("toElement()", () => {
     expect(divFromElement instanceof HTMLParagraphElement).toBe(false);
     expect(div === divFromElement).toBe(true);
   });
+
+  test("throws when wrong input given", () => {
+    // expect(toElement("345")).toThrow();
+    // expect(toElement("diiv")).toThrow();
+  });
 });
